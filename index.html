@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Pay - Profile</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f2f5, #dfe6e9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .card {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 20px;
+    animation: fadeIn 0.8s ease;
+  }
+
+  .profile {
+    text-align: center;
+  }
+
+  .profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 4px solid #f1f1f1;
+  }
+
+  .profile h2 {
+    margin: 5px 0;
+  }
+
+  .profile p {
+    color: gray;
+    font-size: 14px;
+  }
+
+  .activities {
+    margin-top: 20px;
+  }
+
+  .activity {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+  }
+
+  .activity:hover {
+    background: #eef1f4;
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="profile">
+    <!-- Replace with your actual image -->
+    <img src="IMG-20260430-WA0017.jpg" alt="David Pay">
+    <h2>David Pay</h2>
+    <p>Recent Activities</p>
+  </div>
+
+  <div class="activities">
+
+    <div class="activity">
+      ☎️ Contacted Shelley Cook
+    </div>
+
+    <div class="activity">
+      👁️ Viewed loopsi410
+    </div>
+
+    <div class="activity">
+      🌍 Visited Amsterdam, Netherlands
+    </div>
+
+    <div class="activity">
+      🏨 Contacted Meininger Hotel Amsterdam
+    </div>
+
+    <div class="activity">
+      👁️ Viewed loopsi410
+    </div>
+
+    <div class="activity">
+      📍 GPS-seen at Slough, UK
+    </div>
+
+    <div class="activity">
+      ☎️ Contacted Shelley Cook
+    </div>
+
+    <div class="activity">
+      💬 Viewed messages from Lucy Tregear
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
