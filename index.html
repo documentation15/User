@@ -1,133 +1,227 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>David Pay - Profile</title>
+<title>David Pay - Activity Log</title>
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f0f2f5, #dfe6e9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-  .card {
-    background: white;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    padding: 20px;
-    animation: fadeIn 0.8s ease;
-  }
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    padding:30px 15px;
+}
 
-  .profile {
-    text-align: center;
-  }
+.container{
+    width:100%;
+    max-width:700px;
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
 
-  .profile img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 4px solid #f1f1f1;
-  }
+.header{
+    background:#1f4e79;
+    color:white;
+    text-align:center;
+    padding:35px 20px 20px;
+}
 
-  .profile h2 {
-    margin: 5px 0;
-  }
+.header img{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border:4px solid white;
+    object-fit:cover;
+    margin-bottom:10px;
+}
 
-  .profile p {
-    color: gray;
-    font-size: 14px;
-  }
+.header h2{
+    margin-bottom:5px;
+}
 
-  .activities {
-    margin-top: 20px;
-  }
+.header p{
+    opacity:.85;
+    font-size:14px;
+}
 
-  .activity {
-    background: #f8f9fa;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: 0.3s;
-  }
+.summary{
+    display:flex;
+    justify-content:space-around;
+    padding:15px;
+    background:#f7f9fb;
+    border-bottom:1px solid #ddd;
+}
 
-  .activity:hover {
-    background: #eef1f4;
-    transform: translateY(-2px);
-  }
+.summary div{
+    text-align:center;
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+.summary h3{
+    color:#1f4e79;
+}
+
+.activities{
+    padding:20px;
+}
+
+.activity{
+    display:grid;
+    grid-template-columns:80px 1fr 60px;
+    gap:15px;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+}
+
+.time{
+    color:#666;
+    font-size:13px;
+}
+
+.details{
+    font-size:15px;
+}
+
+.details span{
+    display:block;
+    color:#888;
+    font-size:12px;
+    margin-top:3px;
+}
+
+.status{
+    text-align:right;
+    color:green;
+    font-size:18px;
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    background:#f7f9fb;
+    color:#777;
+    font-size:13px;
+}
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="card">
+<div class="container">
 
-  <div class="profile">
-    <!-- Replace with your actual image -->
-    <img src="IMG-20260615-WA0000.jpg" alt="David Pay">
-    <h2>David Pay</h2>
-    <p>Recent Activities</p>
-  </div>
+<div class="header">
+<img src="IMG-20260615-WA0000.jpg" alt="David Pay">
+<h2>David Pay</h2>
+<p>Activity Log</p>
+</div>
+
+<div class="summary">
+<div>
+<h3>128</h3>
+<small>Activities</small>
+</div>
+
+<div>
+<h3>Today</h3>
+<small>Last Active</small>
+</div>
+
+<div>
+<h3>Online</h3>
+<small>Status</small>
+</div>
+</div>
+
 <div class="activities">
 
-  <div class="activity">
-    👁️ Viewed loopsi410 — 18 hours ago
-  </div>
+<div class="activity">
+<div class="time">8:12 PM</div>
+<div class="details">
+👁️ Viewed loopsi410
+<span>18 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
-  <div class="activity">
-    🖼️ Saved profile picture from shared media — 17 hours ago
-  </div>
+<div class="activity">
+<div class="time">7:45 PM</div>
+<div class="details">
+🖼️ Saved profile picture
+<span>17 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
-  <div class="activity">
-    📧 Saved email attachment — 16 hours ago
-  </div>
+<div class="activity">
+<div class="time">6:51 PM</div>
+<div class="details">
+📧 Saved email attachment
+<span>16 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
-  <div class="activity">
-    📅 Scheduled meeting with Lucy Tregear — 16 hours ago
-  </div>
+<div class="activity">
+<div class="time">6:10 PM</div>
+<div class="details">
+📅 Scheduled meeting with Lucy Tregear
+<span>16 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
-  <div class="activity">
-    🎁 Confirmed online gift order — 15 hours ago
-  </div>
+<div class="activity">
+<div class="time">5:32 PM</div>
+<div class="details">
+🎁 Confirmed online gift order
+<span>15 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
-  <div class="activity">
-    📍 Shared live location with Shelley — 15 hours ago
-  </div>
+<div class="activity">
+<div class="time">5:15 PM</div>
+<div class="details">
+📍 Shared live location with Shelley
+<span>15 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
-  <div class="activity">
-    🎵 Played favorite music playlist — 14 hours ago
-  </div>
+<div class="activity">
+<div class="time">4:42 PM</div>
+<div class="details">
+🎵 Played favourite music playlist
+<span>14 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
-  <div class="activity">
-    💬 Replied to Shelley message — 13 hours ago
-  </div>
+<div class="activity">
+<div class="time">4:00 PM</div>
+<div class="details">
+💬 Replied to Shelley message
+<span>13 hours ago</span>
+</div>
+<div class="status">✓</div>
+</div>
 
 </div>
+
+<div class="footer">
+Last Updated • 31 July 2026
+</div>
+
 </div>
 
 </body>
