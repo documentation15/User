@@ -1,277 +1,1092 @@
-<!DOCTYPE html>
+h<!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>David Pay - Activity Log</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+
+/* ========================================
+   PAGE
+======================================== */
+
+* {
+    box-sizing: border-box;
 }
 
-body{
-    background:#eef2f7;
-    display:flex;
-    justify-content:center;
-    padding:30px 15px;
+body {
+    margin: 0;
+    padding: 30px 15px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(220, 38, 38, 0.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(59, 130, 246, 0.10),
+            transparent 35%
+        ),
+        #111827;
+
+    color: #f9fafb;
+
+    min-height: 100vh;
 }
 
-.container{
-    width:100%;
-    max-width:700px;
-    background:#fff;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: auto;
 }
 
-.header{
-    background:#1f4e79;
-    color:white;
-    text-align:center;
-    padding:35px 20px 20px;
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    margin-bottom: 20px;
 }
 
-.header img{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    border:4px solid white;
-    object-fit:cover;
-    margin-bottom:10px;
+.header h1 {
+    margin: 0;
+
+    font-size: 28px;
+
+    color: #ffffff;
 }
 
-.header h2{
-    margin-bottom:5px;
+.header p {
+    margin-top: 7px;
+
+    color: #9ca3af;
+
+    font-size: 14px;
 }
 
-.activity{
-    display:grid;
-    grid-template-columns:80px 1fr 110px;
-    gap:15px;
-    align-items:center;
-    padding:15px 0;
-    border-bottom:1px solid #eee;
+
+/* ========================================
+   ACTIVITY LIST
+======================================== */
+
+.activities {
+    padding: 10px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(12px);
 }
 
-.open-btn{
-    display:inline-block;
-    background:#1f4e79;
-    color:#fff;
-    text-decoration:none;
-    text-align:center;
-    padding:8px 12px;
-    border-radius:6px;
-    font-size:13px;
-    font-weight:600;
-    transition:.3s ease;
+
+/* ========================================
+   ACTIVITY
+======================================== */
+
+.activity {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 18px;
+
+    margin-bottom: 8px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    border-radius: 12px;
+
+    transition: 0.2s ease;
 }
 
-.open-btn:hover{
-    background:#163b5b;
-    transform:translateY(-1px);
-}    
-.header p{
-    opacity:.85;
-    font-size:14px;
+.activity:last-child {
+    margin-bottom: 0;
 }
 
-.summary{
-    display:flex;
-    justify-content:space-around;
-    padding:15px;
-    background:#f7f9fb;
-    border-bottom:1px solid #ddd;
+.activity:hover {
+    background: rgba(255, 255, 255, 0.09);
+
+    transform: translateY(-1px);
 }
 
-.summary div{
-    text-align:center;
+
+/* ========================================
+   TIME
+======================================== */
+
+.time {
+    min-width: 70px;
+
+    color: #d1d5db;
+
+    font-size: 13px;
+
+    font-weight: 600;
 }
 
-.summary h3{
-    color:#1f4e79;
+
+/* ========================================
+   DETAILS
+======================================== */
+
+.details {
+    flex: 1;
+
+    color: #f9fafb;
+
+    font-size: 14px;
+
+    font-weight: 500;
 }
 
-.activities{
-    padding:20px;
+.details span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+
+    font-weight: 400;
 }
 
-.activity{
-    display:grid;
-    grid-template-columns:80px 1fr 60px;
-    gap:15px;
-    align-items:center;
-    padding:14px 0;
-    border-bottom:1px solid #eee;
+
+/* ========================================
+   RED ACTIVITY BUTTON
+======================================== */
+
+.open-btn {
+    border: none;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    padding: 9px 15px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
-.time{
-    color:#666;
-    font-size:13px;
+.open-btn:hover {
+    background: #ef4444;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 15px rgba(220, 38, 38, 0.35);
 }
 
-.details{
-    font-size:15px;
+.open-btn:active {
+    background: #991b1b;
+
+    transform: translateY(0);
 }
 
-.details span{
-    display:block;
-    color:#888;
-    font-size:12px;
-    margin-top:3px;
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    padding: 25px 15px;
+
+    color: #9ca3af;
+
+    font-size: 13px;
 }
 
-.status{
-    text-align:right;
-    color:green;
-    font-size:18px;
+.footer p {
+    margin: 5px 0;
 }
 
-.footer{
-    text-align:center;
-    padding:15px;
-    background:#f7f9fb;
-    color:#777;
-    font-size:13px;
+.footer strong {
+    color: #ffffff;
 }
+
+
+/* ========================================
+   MODAL BACKGROUND
+======================================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* ========================================
+   MODAL BOX
+======================================== */
+
+.modal-content {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 480px;
+
+    background: #1f2937;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45);
+
+    animation: modalOpen 0.2s ease;
+}
+
+
+@keyframes modalOpen {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* ========================================
+   MODAL ICON
+======================================== */
+
+.modal-icon {
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(220, 38, 38, 0.12);
+
+    border-radius: 50%;
+
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+
+/* ========================================
+   MODAL TITLE
+======================================== */
+
+.modal-content h2 {
+    margin: 0 0 22px;
+
+    font-size: 21px;
+
+    color: #ffffff;
+}
+
+
+/* ========================================
+   MODAL INFORMATION
+======================================== */
+
+.modal-info {
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-row {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-row span {
+    font-size: 11px;
+
+    color: #9ca3af;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.info-row strong {
+    font-size: 14px;
+
+    color: #f3f4f6;
+
+    font-weight: 500;
+}
+
+
+/* ========================================
+   STATUS
+======================================== */
+
+.info-row .status {
+    color: #4ade80;
+
+    font-weight: 600;
+}
+
+
+/* ========================================
+   MODAL X BUTTON
+======================================== */
+
+.close-btn {
+    position: absolute;
+
+    top: 15px;
+
+    right: 17px;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+
+    font-size: 23px;
+
+    color: #d1d5db;
+
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background: #dc2626;
+
+    color: #ffffff;
+}
+
+
+/* ========================================
+   MODAL CLOSE BUTTON
+======================================== */
+
+.modal-close {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #ef4444;
+
+    box-shadow:
+        0 5px 15px rgba(220, 38, 38, 0.3);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .activity {
+        flex-wrap: wrap;
+
+        gap: 10px;
+
+        padding: 15px;
+    }
+
+    .time {
+        width: 100%;
+
+        min-width: auto;
+    }
+
+    .details {
+        width: 100%;
+    }
+
+    .open-btn {
+        width: 100%;
+
+        padding: 11px;
+    }
+
+    .modal-content {
+        padding: 24px;
+    }
+}
+
 </style>
 
 </head>
+
+
 <body>
+
 
 <div class="container">
 
-<div class="header">
-<img src="IMG-20260615-WA0000.jpg" alt="David Pay">
-<h2>David Pay</h2>
-<p>Activity Log</p>
-</div>
 
-<div class="summary">
-<div>
-<h3>128</h3>
-<small>Activities</small>
-</div>
+    <!-- ====================================
+         HEADER
+    ===================================== -->
 
-<div>
-<h3>Today</h3>
-<small>Last Active</small>
-</div>
+    <div class="header">
 
-<div>
-<h3>Online</h3>
-<small>Status</small>
-</div>
-</div>
+        <h1>David Pay — Activity Log</h1>
 
-<div class="activities">
+        <p>
+            Recent account activity and interaction history
+        </p>
 
-<div class="activity">
-    <div class="time">10:42 AM</div>
-    <div class="details">
-        📍 Location service enabled
-        <span>1 hour ago</span>
     </div>
-    <a href="#" class="open-btn">View Location</a>
-</div>
 
-<div class="activity">
-    <div class="time">6:35 AM</div>
-    <div class="details">
-        💬 Opened unread conversation
-        <span>5 hours ago</span>
+
+    <!-- ====================================
+         ACTIVITIES
+    ===================================== -->
+
+    <div class="activities">
+
+
+        <!-- Activity 1 -->
+
+        <div class="activity">
+
+            <div class="time">
+                6:35 AM
+            </div>
+
+            <div class="details">
+
+                💬 Opened unread conversation
+
+                <span>
+                    5 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Unread Conversation',
+                    'A previously unread conversation was opened and reviewed.',
+                    '6:35 AM',
+                    'Messaging'
+                )">
+
+                View Conversation
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 2 -->
+
+        <div class="activity">
+
+            <div class="time">
+                4:28 AM
+            </div>
+
+            <div class="details">
+
+                🏨 Made hotel reservations for two days
+
+                <span>
+                    7 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Hotel Reservation',
+                    'A hotel reservation was successfully made for a two-day stay.',
+                    '4:28 AM',
+                    'Travel & Reservations'
+                )">
+
+                View Reservation
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 3 -->
+
+        <div class="activity">
+
+            <div class="time">
+                1:54 AM
+            </div>
+
+            <div class="details">
+
+                👁️ Viewed loopsi410
+
+                <span>
+                    10 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Profile Viewed',
+                    'The profile loopsi410 was opened and viewed.',
+                    '1:54 AM',
+                    'Profile Activity'
+                )">
+
+                View Profile
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 4 -->
+
+        <div class="activity">
+
+            <div class="time">
+                3:48 AM
+            </div>
+
+            <div class="details">
+
+                📧 Email successfully archived
+
+                <span>
+                    8 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Email Archived',
+                    'An email was successfully moved to the archived folder.',
+                    '3:48 AM',
+                    'Email'
+                )">
+
+                View Email
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 5 -->
+
+        <div class="activity">
+
+            <div class="time">
+                2:57 AM
+            </div>
+
+            <div class="details">
+
+                🚫 Restricted WhatsApp calls and videos from Shelley
+
+                <span>
+                    9 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'WhatsApp Restrictions',
+                    'Calls and video calls from Shelley were restricted.',
+                    '2:57 AM',
+                    'Communication'
+                )">
+
+                View Details
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 6 -->
+
+        <div class="activity">
+
+            <div class="time">
+                3:26 AM
+            </div>
+
+            <div class="details">
+
+                🚗 Scheduled reminder: Automobile service
+
+                <span>
+                    8 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Automobile Service',
+                    'A reminder was scheduled for an upcoming automobile service appointment.',
+                    '3:26 AM',
+                    'Reminders'
+                )">
+
+                Service History
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 7 -->
+
+        <div class="activity">
+
+            <div class="time">
+                7:46 AM
+            </div>
+
+            <div class="details">
+
+                💳 Payment confirmed for online purchase
+
+                <span>
+                    4 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Online Purchase',
+                    'Payment for an online purchase was successfully confirmed.',
+                    '7:46 AM',
+                    'Payment'
+                )">
+
+                Purchased Items
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 8 -->
+
+        <div class="activity">
+
+            <div class="time">
+                8:53 AM
+            </div>
+
+            <div class="details">
+
+                📍 GPS logged near Riverside Walk
+
+                <span>
+                    3 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'GPS Location',
+                    'A GPS location was recorded near Riverside Walk.',
+                    '8:53 AM',
+                    'Location'
+                )">
+
+                Captured Images
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 9 -->
+
+        <div class="activity">
+
+            <div class="time">
+                6:11 AM
+            </div>
+
+            <div class="details">
+
+                📅 Scheduled meeting with Lucy Tregear
+
+                <span>
+                    5 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Scheduled Meeting',
+                    'A meeting with Lucy Tregear was added to the schedule.',
+                    '6:11 AM',
+                    'Calendar'
+                )">
+
+                Meeting Details
+
+            </button>
+
+        </div>
+
+
     </div>
-    <a href="#" class="open-btn">View Conversation</a>
-</div>
 
-<div class="activity">
-    <div class="time">4:28 AM</div>
-    <div class="details">
-        🏨 Made hotel reservations for two days
-        <span>7 hours ago</span>
+
+    <!-- ====================================
+         FOOTER
+    ===================================== -->
+
+    <div class="footer">
+
+        <p>
+            <strong>Digital Activity Dashboard</strong>
+        </p>
+
+        <p>
+            Secure session • Activity records synchronized successfully
+        </p>
+
+        <p>
+            Displaying the most recent activity history.
+        </p>
+
+        <p style="margin-top:8px; font-size:12px; color:#6b7280;">
+            Version 2.1.0 | © 2026 David Pay. All rights reserved.
+        </p>
+
     </div>
-    <a href="#" class="open-btn">View Reservation</a>
+
+
 </div>
 
-<div class="activity">
-    <div class="time">1:54 AM</div>
-    <div class="details">
-        👁️ Viewed loopsi410
-        <span>10 hours ago</span>
+
+<!-- ========================================
+     DETAILS POPUP
+======================================== -->
+
+<div id="detailsModal" class="modal">
+
+
+    <div class="modal-content">
+
+
+        <!-- Close X -->
+
+        <button
+            class="close-btn"
+            onclick="closeDetails()">
+
+            ×
+
+        </button>
+
+
+        <!-- Icon -->
+
+        <div class="modal-icon">
+            📋
+        </div>
+
+
+        <!-- Title -->
+
+        <h2 id="modalTitle">
+            Activity Details
+        </h2>
+
+
+        <!-- Information -->
+
+        <div class="modal-info">
+
+
+            <div class="info-row">
+
+                <span>
+                    Activity
+                </span>
+
+                <strong id="modalDescription">
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Time
+                </span>
+
+                <strong id="modalTime">
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Category
+                </span>
+
+                <strong id="modalCategory">
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Status
+                </span>
+
+                <strong class="status">
+                    Completed
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Close -->
+
+        <button
+            class="modal-close"
+            onclick="closeDetails()">
+
+            Close
+
+        </button>
+
+
     </div>
-    <a href="#" class="open-btn">View Profile</a>
-</div>
-
-<div class="activity">
-    <div class="time">3:48 AM</div>
-    <div class="details">
-        📧 Email successfully archived
-        <span>8 hours ago</span>
-    </div>
-    <a href="#" class="open-btn">View Email</a>
-</div>
-
-<div class="activity">
-    <div class="time">2:57 AM</div>
-    <div class="details">
-        🚫 Restricted WhatsApp calls and videos from Shelley
-        <span>9 hours ago</span>
-    </div>
-    <a href="#" class="open-btn">View Details</a>
-</div>
-
-<div class="activity">
-    <div class="time">3:26 AM</div>
-    <div class="details">
-        🚗 Scheduled reminder: Automobile service
-        <span>8 hours ago</span>
-    </div>
-    <a href="#" class="open-btn">Service History</a>
-</div>
-
-<div class="activity">
-    <div class="time">7:46 AM</div>
-    <div class="details">
-        💳 Payment confirmed for online purchase
-        <span>4 hours ago</span>
-    </div>
-    <a href="#" class="open-btn">Purchased Items</a>
-</div>
-
-<div class="activity">
-    <div class="time">8:53 AM</div>
-    <div class="details">
-        📍 GPS logged near Riverside Walk
-        <span>3 hours ago</span>
-    </div>
-    <a href="#" class="open-btn">Captured Images</a>
-</div>
-
-<div class="activity">
-    <div class="time">6:11 AM</div>
-    <div class="details">
-        📅 Scheduled meeting with Lucy Tregear
-        <span>5 hours ago</span>
-    </div>
-    <a href="#" class="open-btn">Meeting Details</a>
-</div>
 
 </div>
 
-<div class="footer">
-    <p><strong>Digital Activity Dashboard</strong></p>
-    <p>Secure session • Activity records synchronized successfully</p>
-    <p>Displaying the most recent activity history.</p>
-    <p style="margin-top:8px; font-size:12px; color:#999;">
-        Version 2.1.0 | © 2026 David Pay. All rights reserved.
-    </p>
-</div>
 
-</div>
+<script>
+
+/* ========================================
+   OPEN DETAILS
+======================================== */
+
+function showDetails(
+    title,
+    description,
+    time,
+    category
+) {
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
+
+
+    document.getElementById(
+        "modalDescription"
+    ).textContent = description;
+
+
+    document.getElementById(
+        "modalTime"
+    ).textContent = time;
+
+
+    document.getElementById(
+        "modalCategory"
+    ).textContent = category;
+
+
+    document.getElementById(
+        "detailsModal"
+    ).style.display = "flex";
+
+}
+
+
+/* ========================================
+   CLOSE DETAILS
+======================================== */
+
+function closeDetails() {
+
+    document.getElementById(
+        "detailsModal"
+    ).style.display = "none";
+
+}
+
+
+/* ========================================
+   CLOSE WHEN CLICKING OUTSIDE
+======================================== */
+
+window.onclick = function(event) {
+
+    const modal =
+        document.getElementById(
+            "detailsModal"
+        );
+
+    if (event.target === modal) {
+
+        closeDetails();
+
+    }
+
+};
+
+
+/* ========================================
+   CLOSE WITH ESC KEY
+======================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closeDetails();
+
+        }
+
+    }
+);
+
+</script>
+
 
 </body>
 </html>
