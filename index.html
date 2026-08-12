@@ -1,4 +1,4 @@
-h<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -49,7 +49,6 @@ body {
 .container {
     width: 100%;
     max-width: 1000px;
-
     margin: auto;
 }
 
@@ -64,111 +63,16 @@ body {
 
 .header h1 {
     margin: 0;
-
     font-size: 28px;
-
     color: #ffffff;
 }
 
 .header p {
     margin-top: 7px;
-
     color: #9ca3af;
-
     font-size: 14px;
 }
-/* ========================================
-   PROFILE HEADER
-======================================== */
 
-.profile-header {
-    display: flex;
-
-    align-items: center;
-
-    gap: 16px;
-
-    margin-bottom: 25px;
-
-    padding: 18px 20px;
-
-    background: rgba(255, 255, 255, 0.045);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 16px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.20);
-
-    backdrop-filter: blur(12px);
-}
-
-
-/* Profile Picture */
-
-.profile-picture {
-    width: 68px;
-
-    height: 68px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    border: 3px solid #dc2626;
-
-    box-shadow:
-        0 0 0 4px rgba(220, 38, 38, 0.12),
-        0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-
-/* Profile Information */
-
-.profile-info {
-    flex: 1;
-}
-
-.profile-info h1 {
-    margin: 0;
-
-    font-size: 25px;
-
-    color: #ffffff;
-}
-
-.profile-info p {
-    margin: 6px 0 0;
-
-    color: #9ca3af;
-
-    font-size: 13px;
-}
-
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-    .profile-header {
-        padding: 15px;
-    }
-
-    .profile-picture {
-        width: 55px;
-        height: 55px;
-    }
-
-    .profile-info h1 {
-        font-size: 19px;
-    }
-
-    .profile-info p {
-        font-size: 12px;
-    }
-
-}
 
 /* ========================================
    ACTIVITY LIST
@@ -366,7 +270,11 @@ body {
 
     width: 100%;
 
-    max-width: 480px;
+    max-width: 520px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
 
     background: #1f2937;
 
@@ -438,6 +346,27 @@ body {
     font-size: 21px;
 
     color: #ffffff;
+}
+
+
+/* ========================================
+   MODAL IMAGE
+======================================== */
+
+.modal-image {
+    display: none;
+
+    width: 100%;
+
+    max-height: 420px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    background: #111827;
 }
 
 
@@ -520,6 +449,8 @@ body {
     color: #d1d5db;
 
     cursor: pointer;
+
+    z-index: 2;
 }
 
 .close-btn:hover {
@@ -605,6 +536,12 @@ body {
 
     .modal-content {
         padding: 24px;
+
+        max-height: 92vh;
+    }
+
+    .modal-image {
+        max-height: 350px;
     }
 }
 
@@ -620,386 +557,370 @@ body {
 
 
     <!-- ====================================
-     HEADER
-===================================== -->
+         HEADER
+    ===================================== -->
 
-<div class="header">
+    <div class="header">
 
-    <div class="profile-header">
+        <h1>David Pay — Activity Log</h1>
 
-        <!-- Profile Picture -->
-        <img
-            src="IMG-20260615-WA0000.jpg"
-            alt="David Pay"
-            class="profile-picture"
-        >
-
-        <div class="profile-info">
-
-            <h1>David Pay — Activity Log</h1>
-
-            <p>
-                Recent account activity and interaction history
-            </p>
-
-        </div>
+        <p>
+            Recent account activity and interaction history
+        </p>
 
     </div>
-
-</div>
 
 
     <!-- ====================================
          ACTIVITIES
     ===================================== -->
 
+    <div class="activities">
 
-        <div class="activities">
 
+        <!-- Activity 1 -->
 
-    <!-- Activity 1 -->
+        <div class="activity">
 
-    <div class="activity">
+            <div class="time">
+                6:58 PM
+            </div>
 
-        <div class="time">
-            6:58 PM
+            <div class="details">
+
+                👁️ Viewed loopsi410
+
+                <span>
+                    21 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Viewed loopsi410',
+                    'Click to see profile',
+                    '6:58 PM',
+                    'IMG-20260811-WA0051.jpg'
+                )">
+
+                View Profile
+
+            </button>
+
         </div>
 
-        <div class="details">
 
-            👁️ Viewed loopsi410
+        <!-- Activity 2 -->
 
-            <span>
-                21 hours ago
-            </span>
+        <div class="activity">
+
+            <div class="time">
+                7:00 PM
+            </div>
+
+            <div class="details">
+
+                📞 10 minutes call conversation with Callum on +447913117312
+
+                <span>
+                    21 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Call Conversation',
+                    '10 minutes call conversation with Callum on +447913117312',
+                    '7:00 PM',
+                    ''
+                )">
+
+                View Details
+
+            </button>
 
         </div>
 
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Viewed loopsi410',
-                'Click to see profile',
-                '6:58 PM',
-                'IMG-20260811-WA0051.jpg'
-            )">
 
-            View Profile
+        <!-- Activity 3 -->
 
-        </button>
+        <div class="activity">
+
+            <div class="time">
+                9:25 PM
+            </div>
+
+            <div class="details">
+
+                📍 Live GPS location spotted near Mont Blanc
+
+                <span>
+                    19 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'GPS Location',
+                    'Live GPS location spotted near Mont Blanc.',
+                    '9:25 PM',
+                    'IMG-20260811-WA0054.jpg'
+                )">
+
+                View Location
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 4 -->
+
+        <div class="activity">
+
+            <div class="time">
+                9:57 PM
+            </div>
+
+            <div class="details">
+
+                🎥 CCTV footage captured at Hotel Mont Blanc
+
+                <span>
+                    18 hours ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'CCTV Footage',
+                    'CCTV footage captured at Hotel Mont Blanc.',
+                    '9:57 PM',
+                    'IMG-20260811-WA0055.jpg'
+                )">
+
+                View Footage
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 5 -->
+
+        <div class="activity">
+
+            <div class="time">
+                3:24 PM
+            </div>
+
+            <div class="details">
+
+                📞 Returned missed call
+                <br>
+                +447906767395 Paul Gaskel
+
+                <span>
+                    53 minutes ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Returned Missed Call',
+                    'Returned missed call from +447906767395 Paul Gaskel.',
+                    '3:24 PM',
+                    ''
+                )">
+
+                Call Details
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 6 -->
+
+        <div class="activity">
+
+            <div class="time">
+                3:28 PM
+            </div>
+
+            <div class="details">
+
+                🔐 David Pay completed security verification on Apple device
+
+                <span>
+                    49 minutes ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Security Verification',
+                    'David Pay completed security verification on an Apple device.',
+                    '3:28 PM',
+                    'IMG-20260812-WA0000.jpg'
+                )">
+
+                View Verification
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 7 -->
+
+        <div class="activity">
+
+            <div class="time">
+                3:38 PM
+            </div>
+
+            <div class="details">
+
+                👍 David Pay recently liked a video posted by Shelley
+
+                <span>
+                    39 minutes ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Video Liked',
+                    'David Pay recently liked a video posted by Shelley.',
+                    '3:38 PM',
+                    'IMG-20260812-WA0001.jpg'
+                )">
+
+                View Video
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 8 -->
+
+        <div class="activity">
+
+            <div class="time">
+                3:43 PM
+            </div>
+
+            <div class="details">
+
+                ▶️ Viewed video posted by loopsi410 multiple times
+
+                <span>
+                    34 minutes ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Video Viewed',
+                    'A video posted by loopsi410 was viewed multiple times.',
+                    '3:43 PM',
+                    'IMG-20260812-WA0002.jpg'
+                )">
+
+                View Video
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 9 -->
+
+        <div class="activity">
+
+            <div class="time">
+                3:55 PM
+            </div>
+
+            <div class="details">
+
+                💰 Received money from Austin
+
+                <span>
+                    22 minutes ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Money Received',
+                    'Money was received from Austin.',
+                    '3:55 PM',
+                    'IMG-20260812-WA0003.jpg'
+                )">
+
+                View Transaction
+
+            </button>
+
+        </div>
+
+
+        <!-- Activity 10 -->
+
+        <div class="activity">
+
+            <div class="time">
+                4:06 PM
+            </div>
+
+            <div class="details">
+
+                ✈️ Viewed upcoming travel information
+
+                <span>
+                    11 minutes ago
+                </span>
+
+            </div>
+
+            <button
+                class="open-btn"
+                onclick="showDetails(
+                    'Upcoming Travel',
+                    'Upcoming travel information was viewed.',
+                    '4:06 PM',
+                    'IMG-20260812-WA0004.jpg'
+                )">
+
+                View Travel
+
+            </button>
+
+        </div>
+
 
     </div>
-
-
-    <!-- Activity 2 -->
-
-    <div class="activity">
-
-        <div class="time">
-            7:00 PM
-        </div>
-
-        <div class="details">
-
-            📞 10 minutes call conversation with Callum on +447913117312
-
-            <span>
-                21 hours ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Call Conversation',
-                '10 minutes call conversation with Callum on +447913117312',
-                '7:00 PM',
-                'text'
-            )">
-
-            View Details
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 3 -->
-
-    <div class="activity">
-
-        <div class="time">
-            9:25 PM
-        </div>
-
-        <div class="details">
-
-            📍 Live GPS location spotted near Mont Blanc
-
-            <span>
-                19 hours ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'GPS Location',
-                'Live GPS location spotted near Mont Blanc.',
-                '9:25 PM',
-                'IMG-20260811-WA0054.jpg'
-            )">
-
-            View Location
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 4 -->
-
-    <div class="activity">
-
-        <div class="time">
-            9:57 PM
-        </div>
-
-        <div class="details">
-
-            🎥 CCTV footage captured at Hotel Mont Blanc
-
-            <span>
-                18 hours ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'CCTV Footage',
-                'CCTV footage captured at Hotel Mont Blanc.',
-                '9:57 PM',
-                'IMG-20260811-WA0055.jgp'
-            )">
-
-            View Footage
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 5 -->
-
-    <div class="activity">
-
-        <div class="time">
-            3:24 PM
-        </div>
-
-        <div class="details">
-
-            📞 Returned missed call
-            <br>
-            +447906767395 Paul Gaskel
-
-            <span>
-                53 minutes ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Returned Missed Call',
-                'Returned missed call from +447906767395 Paul Gaskel.',
-                '3:24 PM',
-                'text'
-            )">
-
-            Call Details
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 6 -->
-
-    <div class="activity">
-
-        <div class="time">
-            3:28 PM
-        </div>
-
-        <div class="details">
-
-            🔐 David Pay completed security verification on Apple device
-
-            <span>
-                49 minutes ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Security Verification',
-                'David Pay completed security verification on an Apple device.',
-                '3:28 PM',
-                'IMG-20260812-WA0000.jpg'
-            )">
-
-            View Verification
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 7 -->
-
-    <div class="activity">
-
-        <div class="time">
-            3:38 PM
-        </div>
-
-        <div class="details">
-
-            👍 David Pay recently liked a video posted by Shelley
-
-            <span>
-                39 minutes ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Video Liked',
-                'David Pay recently liked a video posted by Shelley.',
-                '3:38 PM',
-                'IMG-20260812-WA0001.jpg'
-            )">
-
-            View Video
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 8 -->
-
-    <div class="activity">
-
-        <div class="time">
-            3:43 PM
-        </div>
-
-        <div class="details">
-
-            ▶️ Viewed video posted by loopsi410 multiple times
-
-            <span>
-                34 minutes ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Video Viewed',
-                'A video posted by loopsi410 was viewed multiple times.',
-                '3:43 PM',
-                'IMG-20260812-WA0002.jpg'
-            )">
-
-            View Video
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 9 -->
-
-    <div class="activity">
-
-        <div class="time">
-            3:55 PM
-        </div>
-
-        <div class="details">
-
-            💰 Received money from Austin
-
-            <span>
-                22 minutes ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Money Received',
-                'Money was received from Austin.',
-                '3:55 PM',
-                'IMG-20260812-WA0003.jpg'
-            )">
-
-            View Transaction
-
-        </button>
-
-    </div>
-
-
-    <!-- Activity 10 -->
-
-    <div class="activity">
-
-        <div class="time">
-            4:06 PM
-        </div>
-
-        <div class="details">
-
-            ✈️ Viewed upcoming travel information
-
-            <span>
-                11 minutes ago
-            </span>
-
-        </div>
-
-        <button
-            class="open-btn"
-            onclick="showDetails(
-                'Upcoming Travel',
-                'Upcoming travel information was viewed.',
-                '4:06 PM',
-                'IMG-20260812-WA0004.jpg'
-            )">
-
-            View Travel
-
-        </button>
-
-    </div>
-
-
-        </div>
 
 
     <!-- ====================================
@@ -1063,6 +984,16 @@ body {
         <h2 id="modalTitle">
             Activity Details
         </h2>
+
+
+        <!-- IMAGE -->
+
+        <img
+            id="modalImage"
+            class="modal-image"
+            src=""
+            alt="Activity image"
+        >
 
 
         <!-- Information -->
@@ -1144,48 +1075,78 @@ body {
    OPEN DETAILS
 ======================================== */
 
+function showDetails(
+    title,
+    description,
+    time,
+    image
+) {
 
-function showDetails(title, description, time, image) {
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
 
-    const modal = document.getElementById("detailsModal");
 
-    document.getElementById("modalTitle").innerText = title;
-    document.getElementById("modalTime").innerText = time;
-    document.getElementById("modalDescription").innerText = description;
+    document.getElementById(
+        "modalDescription"
+    ).textContent = description;
 
-    const imageContainer = document.getElementById("modalImageContainer");
 
-    // Clear previous image
-    imageContainer.innerHTML = "";
+    document.getElementById(
+        "modalTime"
+    ).textContent = time;
 
-    // Show image if an image filename was provided
-    if (image && image !== "text") {
 
-        const img = document.createElement("img");
+    /*
+       If an image filename exists,
+       display the image.
 
-        img.src = image;
-        img.alt = title;
+       If there is no image,
+       hide the image.
+    */
 
-        img.style.width = "100%";
-        img.style.maxHeight = "450px";
-        img.style.objectFit = "contain";
-        img.style.borderRadius = "12px";
-        img.style.marginTop = "15px";
+    const modalImage =
+        document.getElementById("modalImage");
 
-        imageContainer.appendChild(img);
+
+    if (image && image !== "") {
+
+        modalImage.src = image;
+
+        modalImage.style.display = "block";
+
+    } else {
+
+        modalImage.src = "";
+
+        modalImage.style.display = "none";
 
     }
 
-    modal.style.display = "flex";
+
+    /*
+       Display the filename as the
+       category for image activities.
+       Otherwise display Text Details.
+    */
+
+    document.getElementById(
+        "modalCategory"
+    ).textContent =
+        image && image !== ""
+        ? "Image Evidence"
+        : "Text Details";
+
+
+    /*
+       Open popup
+    */
+
+    document.getElementById(
+        "detailsModal"
+    ).style.display = "flex";
+
 }
-
-
-function closeDetails() {
-
-    document.getElementById("detailsModal").style.display = "none";
-
-}
-
 
 
 /* ========================================
