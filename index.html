@@ -1144,38 +1144,48 @@ body {
    OPEN DETAILS
 ======================================== */
 
-function showDetails(
-    title,
-    description,
-    time,
-    category
-) {
 
-    document.getElementById(
-        "modalTitle"
-    ).textContent = title;
+function showDetails(title, description, time, image) {
+
+    const modal = document.getElementById("detailsModal");
+
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalTime").innerText = time;
+    document.getElementById("modalDescription").innerText = description;
+
+    const imageContainer = document.getElementById("modalImageContainer");
+
+    // Clear previous image
+    imageContainer.innerHTML = "";
+
+    // Show image if an image filename was provided
+    if (image && image !== "text") {
+
+        const img = document.createElement("img");
+
+        img.src = image;
+        img.alt = title;
+
+        img.style.width = "100%";
+        img.style.maxHeight = "450px";
+        img.style.objectFit = "contain";
+        img.style.borderRadius = "12px";
+        img.style.marginTop = "15px";
+
+        imageContainer.appendChild(img);
+
+    }
+
+    modal.style.display = "flex";
+}
 
 
-    document.getElementById(
-        "modalDescription"
-    ).textContent = description;
+function closeDetails() {
 
-
-    document.getElementById(
-        "modalTime"
-    ).textContent = time;
-
-
-    document.getElementById(
-        "modalCategory"
-    ).textContent = category;
-
-
-    document.getElementById(
-        "detailsModal"
-    ).style.display = "flex";
+    document.getElementById("detailsModal").style.display = "none";
 
 }
+
 
 
 /* ========================================
