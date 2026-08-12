@@ -72,7 +72,25 @@ body {
     color: #9ca3af;
     font-size: 14px;
 }
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
+.profile-picture {
+    width: 58px;
+    height: 58px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #dc2626;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
 /* ========================================
    ACTIVITY LIST
@@ -560,15 +578,27 @@ body {
          HEADER
     ===================================== -->
 
-    <div class="header">
+   <div class="header">
 
-        <h1>David Pay — Activity Log</h1>
+    <div class="profile-header">
 
-        <p>
-            Recent account activity and interaction history
-        </p>
+        <img
+            src="profile.jpg"
+            alt="David Pay"
+            class="profile-picture"
+        >
+
+        <div>
+            <h1>David Pay — Activity Log</h1>
+
+            <p>
+                Recent account activity and interaction history
+            </p>
+        </div>
 
     </div>
+
+   </div>
 
 
     <!-- ====================================
