@@ -1,627 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>David Pay - Activity Log</title>
-
-<style>
-
-/* ========================================
-   PAGE
-======================================== */
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 30px 15px;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(220, 38, 38, 0.15),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(59, 130, 246, 0.10),
-            transparent 35%
-        ),
-        #111827;
-
-    color: #f9fafb;
-
-    min-height: 100vh;
-}
-
-
-/* ========================================
-   MAIN CONTAINER
-======================================== */
-
-.container {
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-}
-
-
-/* ========================================
-   HEADER
-======================================== */
-
-.header {
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 28px;
-    color: #ffffff;
-}
-
-.header p {
-    margin-top: 7px;
-    color: #9ca3af;
-    font-size: 14px;
-}
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.profile-picture {
-    width: 58px;
-    height: 58px;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    border: 2px solid #dc2626;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* ========================================
-   ACTIVITY LIST
-======================================== */
-
-.activities {
-    padding: 10px;
-
-    background: rgba(255, 255, 255, 0.04);
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 16px;
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.25);
-
-    backdrop-filter: blur(12px);
-}
-
-
-/* ========================================
-   ACTIVITY
-======================================== */
-
-.activity {
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    padding: 18px;
-
-    margin-bottom: 8px;
-
-    background: rgba(255, 255, 255, 0.055);
-
-    border: 1px solid rgba(255, 255, 255, 0.06);
-
-    border-radius: 12px;
-
-    transition: 0.2s ease;
-}
-
-.activity:last-child {
-    margin-bottom: 0;
-}
-
-.activity:hover {
-    background: rgba(255, 255, 255, 0.09);
-
-    transform: translateY(-1px);
-}
-
-
-/* ========================================
-   TIME
-======================================== */
-
-.time {
-    min-width: 70px;
-
-    color: #d1d5db;
-
-    font-size: 13px;
-
-    font-weight: 600;
-}
-
-
-/* ========================================
-   DETAILS
-======================================== */
-
-.details {
-    flex: 1;
-
-    color: #f9fafb;
-
-    font-size: 14px;
-
-    font-weight: 500;
-}
-
-.details span {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #9ca3af;
-
-    font-size: 12px;
-
-    font-weight: 400;
-}
-
-
-/* ========================================
-   RED ACTIVITY BUTTON
-======================================== */
-
-.open-btn {
-    border: none;
-
-    background: #dc2626;
-
-    color: #ffffff;
-
-    padding: 9px 15px;
-
-    border-radius: 7px;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-.open-btn:hover {
-    background: #ef4444;
-
-    transform: translateY(-1px);
-
-    box-shadow:
-        0 5px 15px rgba(220, 38, 38, 0.35);
-}
-
-.open-btn:active {
-    background: #991b1b;
-
-    transform: translateY(0);
-}
-
-
-/* ========================================
-   FOOTER
-======================================== */
-
-.footer {
-    text-align: center;
-
-    margin-top: 25px;
-
-    padding: 25px 15px;
-
-    color: #9ca3af;
-
-    font-size: 13px;
-}
-
-.footer p {
-    margin: 5px 0;
-}
-
-.footer strong {
-    color: #ffffff;
-}
-
-
-/* ========================================
-   MODAL BACKGROUND
-======================================== */
-
-.modal {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    background: rgba(0, 0, 0, 0.72);
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    backdrop-filter: blur(5px);
-}
-
-
-/* ========================================
-   MODAL BOX
-======================================== */
-
-.modal-content {
-    position: relative;
-
-    width: 100%;
-
-    max-width: 520px;
-
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    background: #1f2937;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-
-    border-radius: 16px;
-
-    padding: 30px;
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.45);
-
-    animation: modalOpen 0.2s ease;
-}
-
-
-@keyframes modalOpen {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(15px)
-            scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* ========================================
-   MODAL ICON
-======================================== */
-
-.modal-icon {
-    width: 52px;
-
-    height: 52px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: rgba(220, 38, 38, 0.12);
-
-    border-radius: 50%;
-
-    font-size: 24px;
-
-    margin-bottom: 15px;
-}
-
-
-/* ========================================
-   MODAL TITLE
-======================================== */
-
-.modal-content h2 {
-    margin: 0 0 22px;
-
-    font-size: 21px;
-
-    color: #ffffff;
-}
-
-
-/* ========================================
-   MODAL IMAGE
-======================================== */
-
-.modal-image {
-    display: none;
-
-    width: 100%;
-
-    max-height: 420px;
-
-    object-fit: contain;
-
-    border-radius: 12px;
-
-    margin-bottom: 20px;
-
-    background: #111827;
-}
-
-
-/* ========================================
-   MODAL INFORMATION
-======================================== */
-
-.modal-info {
-    border-top:
-        1px solid rgba(255, 255, 255, 0.08);
-}
-
-.info-row {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-    padding: 14px 0;
-
-    border-bottom:
-        1px solid rgba(255, 255, 255, 0.08);
-}
-
-.info-row span {
-    font-size: 11px;
-
-    color: #9ca3af;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.5px;
-}
-
-.info-row strong {
-    font-size: 14px;
-
-    color: #f3f4f6;
-
-    font-weight: 500;
-}
-
-
-/* ========================================
-   STATUS
-======================================== */
-
-.info-row .status {
-    color: #4ade80;
-
-    font-weight: 600;
-}
-
-
-/* ========================================
-   MODAL X BUTTON
-======================================== */
-
-.close-btn {
-    position: absolute;
-
-    top: 15px;
-
-    right: 17px;
-
-    width: 34px;
-
-    height: 34px;
-
-    border: none;
-
-    background:
-        rgba(255, 255, 255, 0.08);
-
-    border-radius: 50%;
-
-    font-size: 23px;
-
-    color: #d1d5db;
-
-    cursor: pointer;
-
-    z-index: 2;
-}
-
-.close-btn:hover {
-    background: #dc2626;
-
-    color: #ffffff;
-}
-
-
-/* ========================================
-   MODAL CLOSE BUTTON
-======================================== */
-
-.modal-close {
-    width: 100%;
-
-    margin-top: 22px;
-
-    padding: 12px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #dc2626;
-
-    color: #ffffff;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-}
-
-.modal-close:hover {
-    background: #ef4444;
-
-    box-shadow:
-        0 5px 15px rgba(220, 38, 38, 0.3);
-}
-
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 650px) {
-
-    body {
-        padding: 20px 10px;
-    }
-
-    .header h1 {
-        font-size: 23px;
-    }
-
-    .activity {
-        flex-wrap: wrap;
-
-        gap: 10px;
-
-        padding: 15px;
-    }
-
-    .time {
-        width: 100%;
-
-        min-width: auto;
-    }
-
-    .details {
-        width: 100%;
-    }
-
-    .open-btn {
-        width: 100%;
-
-        padding: 11px;
-    }
-
-    .modal-content {
-        padding: 24px;
-
-        max-height: 92vh;
-    }
-
-    .modal-image {
-        max-height: 350px;
-    }
-}
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="container">
-
-
-    <!-- ====================================
-         HEADER
-    ===================================== -->
-
-   <div class="header">
-
-    <div class="profile-header">
-
-        <img
-            src="IMG-20260615-WA0000.jpg"
-            alt="David Pay"
-            class="profile-picture"
-        >
-
-        <div>
-            <h1>David Pay — Activity Log</h1>
-
-            <p>
-                Recent account activity and interaction history
-            </p>
-        </div>
-
-    </div>
-
-   </div>
-
-
-    <!-- ====================================
-         ACTIVITIES
-    ===================================== -->
-
-    <!-- Activity 1 -->
-
-
-    <!-- Activity 1 -->
+<!-- Activity 1 -->
 
 <div class="activity">
 
     <div class="time">
-        3:43 PM
+        5:30 PM
     </div>
 
     <div class="details">
 
-        👁️ Viewed loopsi410
+        📅 Upcoming Events Reviewed
 
         <span>
-            3 hours ago
+            2 hours ago
         </span>
 
     </div>
@@ -629,13 +19,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Viewed loopsi410',
-            'The loopsi410 profile was viewed.',
-            '3:43 PM',
-            'IMG-20260827-WA0042.jpg'
+            'Upcoming Events',
+            'Upcoming events information was reviewed.',
+            '5:30 PM',
+            'IMG-20260831-WA0014.jpg'
         )">
 
-        View Profile
+        View Events
 
     </button>
 
@@ -647,15 +37,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        3:46 PM
+        5:38 PM
     </div>
 
     <div class="details">
 
-        🔍 Zoomed loopsi profile picture
+        📅 Appointment details Modified
 
         <span>
-            3 hours ago
+            2 hours ago
         </span>
 
     </div>
@@ -663,13 +53,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Profile Picture Zoomed',
-            'The loopsi profile picture was zoomed for closer viewing.',
-            '3:46 PM',
-            'IMG-20260827-WA0043.jpg'
+            'Appointment Modified',
+            'Appointment details were modified.',
+            '5:38 PM',
+            'IMG-20260831-WA0016.jpg'
         )">
 
-        View Picture
+        View Appointment
 
     </button>
 
@@ -681,15 +71,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        3:51 PM
+        5:48 PM
     </div>
 
     <div class="details">
 
-        📞 Returned missed call from John
+        🎙️ Recieved voice message from Carol Pay
 
         <span>
-            3 hours ago
+            2 hours ago
         </span>
 
     </div>
@@ -697,13 +87,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Returned Missed Call',
-            'A missed call from John was returned.',
-            '3:51 PM',
-            'IMG-20260827-WA0045.jpg'
+            'Voice Message Received',
+            'A voice message was received from Carol Pay.',
+            '5:48 PM',
+            'IMG-20260831-WA0017.jpg'
         )">
 
-        View Call
+        View Message
 
     </button>
 
@@ -715,15 +105,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        3:54 PM
+        5:49 PM
     </div>
 
     <div class="details">
 
-        👤 Viewed profile of city explorer
+        🎧 Listened to Voice Message from Carol Pay
 
         <span>
-            3 hours ago
+            2 hours ago
         </span>
 
     </div>
@@ -731,13 +121,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Profile Viewed',
-            'The profile of city explorer was viewed.',
-            '3:54 PM',
-            'IMG-20260827-WA0044.jpg'
+            'Voice Message Played',
+            'A voice message from Carol Pay was listened to.',
+            '5:49 PM',
+            'IMG-20260831-WA0018.jpg'
         )">
 
-        View Profile
+        View Message
 
     </button>
 
@@ -749,15 +139,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        4:01 PM
+        5:55 PM
     </div>
 
     <div class="details">
 
-        ▶️ Watched loopsi410 twice
+        👁️ Viewed Loopsi410
 
         <span>
-            3 hours ago
+            2 hours ago
         </span>
 
     </div>
@@ -765,13 +155,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Video Watched',
-            'A video posted by loopsi410 was watched twice.',
-            '4:01 PM',
-            'IMG-20260827-WA0048.jpg'
+            'Profile Viewed',
+            'The Loopsi410 profile was viewed.',
+            '5:55 PM',
+            'IMG-20260831-WA0019.jpg'
         )">
 
-        View Video
+        View Profile
 
     </button>
 
@@ -783,15 +173,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        4:05 PM
+        6:03 PM
     </div>
 
     <div class="details">
 
-        📧 Email attachment downloaded
+        🔎 Facebook search history for Lucy Tregear revealed
 
         <span>
-            3 hours ago
+            1 hour ago
         </span>
 
     </div>
@@ -799,13 +189,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Email Attachment',
-            'An attachment from an email was downloaded.',
-            '4:05 PM',
-            'IMG-20260827-WA0047.jpg'
+            'Facebook Search History',
+            'Facebook search history relating to Lucy Tregear was revealed.',
+            '6:03 PM',
+            'IMG-20260831-WA0020.jpg'
         )">
 
-        View Attachment
+        View History
 
     </button>
 
@@ -817,15 +207,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        4:12 PM
+        6:12 PM
     </div>
 
     <div class="details">
 
-        📍 Live location detected near Windsor roundabout
+        💰 Recieved Payment from Shelley
 
         <span>
-            2 hours ago
+            1 hour ago
         </span>
 
     </div>
@@ -833,13 +223,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Live Location',
-            'Live location was detected near Windsor roundabout.',
-            '4:12 PM',
-            'IMG-20260827-WA0049.jpg'
+            'Payment Received',
+            'A payment was received from Shelley.',
+            '6:12 PM',
+            'IMG-20260831-WA0021.jpg'
         )">
 
-        View Location
+        View Payment
 
     </button>
 
@@ -851,15 +241,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        4:12 PM
+        6:18 PM
     </div>
 
     <div class="details">
 
-        📅 Scheduled to meet Lucy in 10 days
+        📹 Recieved nude Videos from Shelley
 
         <span>
-            2 hours ago
+            1 hour ago
         </span>
 
     </div>
@@ -867,13 +257,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Scheduled Meeting',
-            'A meeting with Lucy was scheduled for 10 days from now.',
-            '4:12 PM',
-            'IMG-20260827-WA0046.jpg'
+            'Videos Received',
+            'Videos were received from Shelley.',
+            '6:18 PM',
+            'IMG-20260831-WA0022.jpg'
         )">
 
-        View Schedule
+        Click to play
 
     </button>
 
@@ -885,15 +275,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        4:18 PM
+        6:24 PM
     </div>
 
     <div class="details">
 
-        📸 Opened Shelley latest photo
+        📹 Saved Video call with Shelley
 
         <span>
-            2 hours ago
+            1 hour ago
         </span>
 
     </div>
@@ -901,13 +291,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Photo Viewed',
-            'Shelley latest photo was opened and viewed.',
-            '4:18 PM',
-            'IMG-20260827-WA0050.jpg'
+            'Video Call Saved',
+            'A video call with Shelley was saved.',
+            '6:24 PM',
+            'IMG-20260831-WA0023.jpg'
         )">
 
-        View Photo
+        View Recording
 
     </button>
 
@@ -919,15 +309,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        4:22 PM
+        6:32 PM
     </div>
 
     <div class="details">
 
-        📞 14 minutes call with Shelley
+        🎙️ Recorded Meet Project Update
 
         <span>
-            2 hours ago
+            1 hour ago
         </span>
 
     </div>
@@ -935,13 +325,13 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Call Conversation',
-            'A 14-minute call conversation with Shelley was recorded.',
-            '4:22 PM',
-            'IMG-20260827-WA0052.jpg'
+            'Project Update Recording',
+            'A Meet Project Update was recorded.',
+            '6:32 PM',
+            'IMG-20260831-WA0025.jpg'
         )">
 
-        View Call
+        View Recording
 
     </button>
 
@@ -953,15 +343,15 @@ body {
 <div class="activity">
 
     <div class="time">
-        4:29 PM
+        6:40 PM
     </div>
 
     <div class="details">
 
-        🏨 Made 1 week hotel reservations
+        💬 Discussed Lucy Tregear with Thomas Cook
 
         <span>
-            2 hours ago
+            1 hour ago
         </span>
 
     </div>
@@ -969,296 +359,14 @@ body {
     <button
         class="open-btn"
         onclick="showDetails(
-            'Hotel Reservation',
-            'A hotel reservation was made for a one-week stay.',
-            '4:29 PM',
-            'IMG-20260827-WA0051.jpg'
+            'Discussion',
+            'Lucy Tregear was discussed with Thomas Cook.',
+            '6:40 PM',
+            'IMG-20260831-WA0026.jpg'
         )">
 
-        View Reservation
+        View Details
 
     </button>
 
 </div>
-
-    <!-- ====================================
-         FOOTER
-    ===================================== -->
-
-    <div class="footer">
-
-        <p>
-            <strong>Digital Activity Dashboard</strong>
-        </p>
-
-        <p>
-            Secure session • Activity records synchronized successfully
-        </p>
-
-        <p>
-            Displaying the most recent activity history.
-        </p>
-
-        <p style="margin-top:8px; font-size:12px; color:#6b7280;">
-            Version 2.1.0 | © 2026 David Pay. All rights reserved.
-        </p>
-
-    </div>
-
-
-</div>
-
-
-<!-- ========================================
-     DETAILS POPUP
-======================================== -->
-
-<div id="detailsModal" class="modal">
-
-
-    <div class="modal-content">
-
-
-        <!-- Close X -->
-
-        <button
-            class="close-btn"
-            onclick="closeDetails()">
-
-            ×
-
-        </button>
-
-
-        <!-- Icon -->
-
-        <div class="modal-icon">
-            📋
-        </div>
-
-
-        <!-- Title -->
-
-        <h2 id="modalTitle">
-            Activity Details
-        </h2>
-
-
-        <!-- IMAGE -->
-
-        <img
-            id="modalImage"
-            class="modal-image"
-            src=""
-            alt="Activity image"
-        >
-
-
-        <!-- Information -->
-
-        <div class="modal-info">
-
-
-            <div class="info-row">
-
-                <span>
-                    Activity
-                </span>
-
-                <strong id="modalDescription">
-                </strong>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <span>
-                    Time
-                </span>
-
-                <strong id="modalTime">
-                </strong>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <span>
-                    Category
-                </span>
-
-                <strong id="modalCategory">
-                </strong>
-
-            </div>
-
-
-            <div class="info-row">
-
-                <span>
-                    Status
-                </span>
-
-                <strong class="status">
-                    Completed
-                </strong>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- Close -->
-
-        <button
-            class="modal-close"
-            onclick="closeDetails()">
-
-            Close
-
-        </button>
-
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* ========================================
-   OPEN DETAILS
-======================================== */
-
-function showDetails(
-    title,
-    description,
-    time,
-    image
-) {
-
-    document.getElementById(
-        "modalTitle"
-    ).textContent = title;
-
-
-    document.getElementById(
-        "modalDescription"
-    ).textContent = description;
-
-
-    document.getElementById(
-        "modalTime"
-    ).textContent = time;
-
-
-    /*
-       If an image filename exists,
-       display the image.
-
-       If there is no image,
-       hide the image.
-    */
-
-    const modalImage =
-        document.getElementById("modalImage");
-
-
-    if (image && image !== "") {
-
-        modalImage.src = image;
-
-        modalImage.style.display = "block";
-
-    } else {
-
-        modalImage.src = "";
-
-        modalImage.style.display = "none";
-
-    }
-
-
-    /*
-       Display the filename as the
-       category for image activities.
-       Otherwise display Text Details.
-    */
-
-    document.getElementById(
-        "modalCategory"
-    ).textContent =
-        image && image !== ""
-        ? "Image Evidence"
-        : "Text Details";
-
-
-    /*
-       Open popup
-    */
-
-    document.getElementById(
-        "detailsModal"
-    ).style.display = "flex";
-
-}
-
-
-/* ========================================
-   CLOSE DETAILS
-======================================== */
-
-function closeDetails() {
-
-    document.getElementById(
-        "detailsModal"
-    ).style.display = "none";
-
-}
-
-
-/* ========================================
-   CLOSE WHEN CLICKING OUTSIDE
-======================================== */
-
-window.onclick = function(event) {
-
-    const modal =
-        document.getElementById(
-            "detailsModal"
-        );
-
-    if (event.target === modal) {
-
-        closeDetails();
-
-    }
-
-};
-
-
-/* ========================================
-   CLOSE WITH ESC KEY
-======================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (event.key === "Escape") {
-
-            closeDetails();
-
-        }
-
-    }
-);
-
-</script>
-
-
-</body>
-</html>
