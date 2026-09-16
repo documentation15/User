@@ -269,18 +269,16 @@ body {
 
 
 .summary-value.red {
-
     color: #f87171;
 }
 
 .summary-value.green {
-
     color: #4ade80;
 }
 
 
 /* =====================================================
-   ACTIVITY CONTAINER
+   ACTIVITY PANEL
 ===================================================== */
 
 .activity-panel {
@@ -409,7 +407,6 @@ body {
 
 
 .activity:last-child {
-
     margin-bottom: 0;
 }
 
@@ -476,7 +473,6 @@ body {
 ===================================================== */
 
 .details {
-
     min-width: 0;
 }
 
@@ -502,10 +498,6 @@ body {
     font-size: 11px;
 }
 
-
-/* =====================================================
-   TYPE BADGES
-===================================================== */
 
 .type-badge {
 
@@ -576,15 +568,6 @@ body {
 }
 
 
-.open-btn:active {
-
-    transform:
-        translateY(0);
-
-    background: #991b1b;
-}
-
-
 /* =====================================================
    FOOTER
 ===================================================== */
@@ -614,7 +597,7 @@ body {
 
 
 /* =====================================================
-   MODAL
+   GENERAL MODAL
 ===================================================== */
 
 .modal {
@@ -634,12 +617,16 @@ body {
     padding: 18px;
 
     background:
-        rgba(0,0,0,.78);
+        rgba(0,0,0,.80);
 
     backdrop-filter:
         blur(8px);
 }
 
+
+/* =====================================================
+   MODAL CONTENT
+===================================================== */
 
 .modal-content {
 
@@ -793,103 +780,6 @@ body {
 
 
 /* =====================================================
-   MEDIA AREA
-===================================================== */
-
-.media-container {
-
-    display: none;
-
-    margin-bottom: 20px;
-
-    overflow: hidden;
-
-    border-radius: 13px;
-
-    background: #080d16;
-
-    border:
-        1px solid rgba(255,255,255,.07);
-}
-
-
-/* IMAGE */
-
-.modal-image {
-
-    display: none;
-
-    width: 100%;
-
-    max-height: 400px;
-
-    object-fit: contain;
-
-    background: #080d16;
-}
-
-
-/* VIDEO */
-
-.modal-video {
-
-    display: none;
-
-    width: 100%;
-
-    max-height: 400px;
-
-    background: #000;
-}
-
-
-/* AUDIO */
-
-.audio-box {
-
-    display: none;
-
-    padding: 25px 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #111827,
-            #0b111c
-        );
-}
-
-
-.audio-icon {
-
-    width: 58px;
-
-    height: 58px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin: 0 auto 15px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(220,38,38,.10);
-
-    font-size: 25px;
-}
-
-
-.modal-audio {
-
-    width: 100%;
-}
-
-
-/* =====================================================
    INFORMATION
 ===================================================== */
 
@@ -902,7 +792,7 @@ body {
 
 .info-row {
 
-    padding: 13px 0;
+    padding: 15px 0;
 
     border-bottom:
         1px solid rgba(255,255,255,.06);
@@ -913,7 +803,7 @@ body {
 
     display: block;
 
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 
     color: #718096;
 
@@ -932,8 +822,14 @@ body {
     font-size: 13px;
 
     font-weight: 500;
+
+    line-height: 1.5;
 }
 
+
+/* =====================================================
+   STATUS
+===================================================== */
 
 .status {
 
@@ -964,27 +860,79 @@ body {
 
 
 /* =====================================================
-   MODAL CLOSE
+   VIEW MEDIA BUTTON
 ===================================================== */
 
-.modal-close {
+.view-media-btn {
 
     width: 100%;
 
     margin-top: 20px;
 
-    padding: 12px;
+    padding: 13px;
 
     border: none;
 
     border-radius: 9px;
 
     background:
-        #dc2626;
+        linear-gradient(
+            135deg,
+            #dc2626,
+            #b91c1c
+        );
 
-    color: white;
+    color: #ffffff;
 
     font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+
+.view-media-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(220,38,38,.25);
+}
+
+
+/* =====================================================
+   CLOSE MODAL BUTTON
+===================================================== */
+
+.modal-close {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 11px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    color: #cbd5e1;
+
+    font-size: 12px;
 
     font-weight: 600;
 
@@ -997,7 +945,155 @@ body {
 .modal-close:hover {
 
     background:
-        #ef4444;
+        rgba(255,255,255,.08);
+}
+
+
+/* =====================================================
+   MEDIA MODAL
+===================================================== */
+
+.media-modal-content {
+
+    max-width: 700px;
+
+    padding: 22px;
+}
+
+
+/* =====================================================
+   MEDIA TITLE
+===================================================== */
+
+.media-title {
+
+    margin: 0 0 18px;
+
+    padding-right: 35px;
+
+    font-size: 17px;
+
+    color: white;
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.media-image {
+
+    display: none;
+
+    width: 100%;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    background: #05080d;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+
+/* =====================================================
+   VIDEO
+===================================================== */
+
+.media-video {
+
+    display: none;
+
+    width: 100%;
+
+    max-height: 70vh;
+
+    border-radius: 12px;
+
+    background: #000;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+
+/* =====================================================
+   AUDIO
+===================================================== */
+
+.audio-box {
+
+    display: none;
+
+    padding: 35px 20px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111827,
+            #080d16
+        );
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    text-align: center;
+}
+
+
+.audio-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(220,38,38,.10);
+
+    border:
+        1px solid rgba(220,38,38,.15);
+
+    font-size: 28px;
+}
+
+
+.media-audio {
+
+    width: 100%;
+}
+
+
+/* =====================================================
+   NO MEDIA
+===================================================== */
+
+.no-media {
+
+    display: none;
+
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: #718096;
+
+    font-size: 13px;
 }
 
 
@@ -1094,10 +1190,6 @@ body {
         grid-column: 1;
 
         grid-row: 2;
-
-        width: 38px;
-
-        height: 38px;
     }
 
 
@@ -1159,8 +1251,6 @@ body {
         grid-template-columns:
             40px
             1fr;
-
-        gap: 10px;
     }
 
 
@@ -1246,6 +1336,7 @@ body {
 </header>
 
 
+
 <!-- =====================================================
      SUMMARY
 ===================================================== -->
@@ -1260,7 +1351,7 @@ body {
         </div>
 
         <div class="summary-value">
-            06
+            08
         </div>
 
     </div>
@@ -1295,6 +1386,7 @@ body {
 </div>
 
 
+
 <!-- =====================================================
      ACTIVITY PANEL
 ===================================================== -->
@@ -1314,23 +1406,21 @@ body {
 
 
         <div class="filter">
-
             LATEST
-
         </div>
 
     </div>
+
 
 
     <div class="activities">
 
 
         <!-- =================================================
-             ACTIVITY 1 — MESSAGE
+             ACTIVITY 1
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 3:35 PM
@@ -1378,11 +1468,10 @@ body {
 
 
         <!-- =================================================
-             ACTIVITY 2 — PAYMENT
+             ACTIVITY 2
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 3:49 PM
@@ -1430,11 +1519,10 @@ body {
 
 
         <!-- =================================================
-             ACTIVITY 3 — MISSED CALLS
+             ACTIVITY 3
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 3:58 PM
@@ -1482,11 +1570,10 @@ body {
 
 
         <!-- =================================================
-             ACTIVITY 4 — WHATSAPP STATUS
+             ACTIVITY 4
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 4:01 PM
@@ -1534,11 +1621,10 @@ body {
 
 
         <!-- =================================================
-             ACTIVITY 5 — GPS
+             ACTIVITY 5
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 4:02 PM
@@ -1586,11 +1672,10 @@ body {
 
 
         <!-- =================================================
-             ACTIVITY 6 — FACEBOOK
+             ACTIVITY 6
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 4:08 PM
@@ -1638,11 +1723,10 @@ body {
 
 
         <!-- =================================================
-             ACTIVITY 7 — VIDEO EXAMPLE
+             ACTIVITY 7 — VIDEO
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 4:15 PM
@@ -1675,13 +1759,13 @@ body {
                 class="open-btn"
                 onclick="showDetails(
                     'Video Activity',
-                    'A video activity record was generated.',
+                    'A video recording associated with this activity was captured and stored.',
                     '4:15 PM',
                     'video',
                     ''
                 )">
 
-                Play
+                View
 
             </button>
 
@@ -1690,11 +1774,10 @@ body {
 
 
         <!-- =================================================
-             ACTIVITY 8 — AUDIO EXAMPLE
+             ACTIVITY 8 — AUDIO
         ================================================== -->
 
         <div class="activity">
-
 
             <div class="time">
                 4:21 PM
@@ -1727,13 +1810,13 @@ body {
                 class="open-btn"
                 onclick="showDetails(
                     'Audio Activity',
-                    'An audio activity record was generated.',
+                    'An audio recording associated with this activity was captured and stored.',
                     '4:21 PM',
                     'audio',
                     ''
                 )">
 
-                Play
+                View
 
             </button>
 
@@ -1765,7 +1848,7 @@ body {
     </p>
 
     <p>
-        Version 3.0.0 | © 2026 David Pay
+        Version 3.1.0 | © 2026 David Pay
     </p>
 
 </footer>
@@ -1776,7 +1859,7 @@ body {
 
 
 <!-- =====================================================
-     MODAL
+     FIRST POPUP — ACTIVITY DETAILS
 ===================================================== -->
 
 <div
@@ -1795,8 +1878,6 @@ body {
 
         </button>
 
-
-        <!-- MODAL HEADER -->
 
         <div class="modal-header">
 
@@ -1819,80 +1900,15 @@ body {
 
 
 
-        <!-- MEDIA -->
-
-        <div
-            id="mediaContainer"
-            class="media-container">
-
-
-            <!-- IMAGE -->
-
-            <img
-                id="modalImage"
-                class="modal-image"
-                src=""
-                alt="Activity image"
-            >
-
-
-            <!-- VIDEO -->
-
-            <video
-                id="modalVideo"
-                class="modal-video"
-                controls
-                playsinline>
-
-                <!--
-                    Intentionally blank source.
-                    Add a video file later if required.
-                -->
-
-            </video>
-
-
-            <!-- AUDIO -->
-
-            <div
-                id="audioBox"
-                class="audio-box">
-
-
-                <div class="audio-icon">
-                    🎧
-                </div>
-
-
-                <audio
-                    id="modalAudio"
-                    class="modal-audio"
-                    controls>
-
-                    <!--
-                        Intentionally blank source.
-                        Add an audio file later.
-                    -->
-
-                </audio>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- INFORMATION -->
-
         <div class="modal-info">
 
+
+            <!-- DESCRIPTION -->
 
             <div class="info-row">
 
                 <span>
-                    Activity
+                    Description
                 </span>
 
                 <strong
@@ -1901,6 +1917,8 @@ body {
 
             </div>
 
+
+            <!-- TIME -->
 
             <div class="info-row">
 
@@ -1915,6 +1933,8 @@ body {
             </div>
 
 
+            <!-- MEDIA TYPE -->
+
             <div class="info-row">
 
                 <span>
@@ -1927,6 +1947,8 @@ body {
 
             </div>
 
+
+            <!-- STATUS -->
 
             <div class="info-row">
 
@@ -1945,6 +1967,21 @@ body {
 
 
 
+        <!-- VIEW MEDIA -->
+
+        <button
+            id="viewMediaButton"
+            class="view-media-btn"
+            onclick="openMedia()">
+
+            View Media
+
+        </button>
+
+
+
+        <!-- CLOSE -->
+
         <button
             class="modal-close"
             onclick="closeDetails()">
@@ -1960,10 +1997,128 @@ body {
 
 
 
+<!-- =====================================================
+     SECOND POPUP — MEDIA
+===================================================== -->
+
+<div
+    id="mediaModal"
+    class="modal">
+
+
+    <div
+        class="modal-content media-modal-content">
+
+
+        <!-- CLOSE -->
+
+        <button
+            class="close-btn"
+            onclick="closeMedia()">
+
+            ×
+
+        </button>
+
+
+        <h2
+            id="mediaTitle"
+            class="media-title">
+
+            Activity Media
+
+        </h2>
+
+
+
+        <!-- IMAGE -->
+
+        <img
+            id="mediaImage"
+            class="media-image"
+            src=""
+            alt="Activity media"
+        >
+
+
+
+        <!-- VIDEO -->
+
+        <video
+            id="mediaVideo"
+            class="media-video"
+            controls
+            playsinline>
+
+            <!--
+                The video source is intentionally blank.
+                Add your video filename later.
+            -->
+
+        </video>
+
+
+
+        <!-- AUDIO -->
+
+        <div
+            id="audioBox"
+            class="audio-box">
+
+
+            <div class="audio-icon">
+                🎧
+            </div>
+
+
+            <audio
+                id="mediaAudio"
+                class="media-audio"
+                controls>
+
+                <!--
+                    The audio source is intentionally blank.
+                    Add your audio filename later.
+                -->
+
+            </audio>
+
+
+        </div>
+
+
+
+        <!-- NO MEDIA -->
+
+        <div
+            id="noMedia"
+            class="no-media">
+
+            No media file is currently available.
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
 <script>
 
 /* =====================================================
-   OPEN MODAL
+   CURRENT MEDIA DATA
+===================================================== */
+
+let currentMediaType = "";
+
+let currentMediaFile = "";
+
+
+
+/* =====================================================
+   OPEN FIRST POPUP
 ===================================================== */
 
 function showDetails(
@@ -1975,51 +2130,14 @@ function showDetails(
 ) {
 
 
-    const modal =
-        document.getElementById(
-            "detailsModal"
-        );
+    /* Save media information */
+
+    currentMediaType = type;
+
+    currentMediaFile = file;
 
 
-    const image =
-        document.getElementById(
-            "modalImage"
-        );
-
-
-    const video =
-        document.getElementById(
-            "modalVideo"
-        );
-
-
-    const audio =
-        document.getElementById(
-            "modalAudio"
-        );
-
-
-    const audioBox =
-        document.getElementById(
-            "audioBox"
-        );
-
-
-    const mediaContainer =
-        document.getElementById(
-            "mediaContainer"
-        );
-
-
-    const icon =
-        document.getElementById(
-            "modalIcon"
-        );
-
-
-    /* ---------------------------------------------
-       BASIC INFORMATION
-    --------------------------------------------- */
+    /* Basic information */
 
     document.getElementById(
         "modalTitle"
@@ -2036,8 +2154,149 @@ function showDetails(
     ).textContent = time;
 
 
+    /* Icon */
+
+    const icon =
+        document.getElementById(
+            "modalIcon"
+        );
+
+
+    if (type === "image") {
+
+        icon.textContent = "🖼️";
+
+        document.getElementById(
+            "modalCategory"
+        ).textContent = "Image";
+
+    }
+
+    else if (type === "video") {
+
+        icon.textContent = "🎥";
+
+        document.getElementById(
+            "modalCategory"
+        ).textContent = "Video";
+
+    }
+
+    else if (type === "audio") {
+
+        icon.textContent = "🎧";
+
+        document.getElementById(
+            "modalCategory"
+        ).textContent = "Audio";
+
+    }
+
+    else {
+
+        icon.textContent = "📋";
+
+        document.getElementById(
+            "modalCategory"
+        ).textContent = "Text";
+
+    }
+
+
     /* ---------------------------------------------
-       RESET MEDIA
+       VIEW MEDIA BUTTON
+    --------------------------------------------- */
+
+    const viewButton =
+        document.getElementById(
+            "viewMediaButton"
+        );
+
+
+    /*
+       If media exists, show View Media.
+
+       For a blank video/audio placeholder,
+       we still show the button because the
+       player will appear in the second popup.
+    */
+
+    if (
+        type === "image" ||
+        type === "video" ||
+        type === "audio"
+    ) {
+
+        viewButton.style.display =
+            "block";
+
+    }
+
+    else {
+
+        viewButton.style.display =
+            "none";
+
+    }
+
+
+    /* ---------------------------------------------
+       OPEN FIRST POPUP
+    --------------------------------------------- */
+
+    document.getElementById(
+        "detailsModal"
+    ).style.display = "flex";
+
+}
+
+
+
+/* =====================================================
+   OPEN SECOND MEDIA POPUP
+===================================================== */
+
+function openMedia() {
+
+
+    const mediaModal =
+        document.getElementById(
+            "mediaModal"
+        );
+
+
+    const image =
+        document.getElementById(
+            "mediaImage"
+        );
+
+
+    const video =
+        document.getElementById(
+            "mediaVideo"
+        );
+
+
+    const audioBox =
+        document.getElementById(
+            "audioBox"
+        );
+
+
+    const audio =
+        document.getElementById(
+            "mediaAudio"
+        );
+
+
+    const noMedia =
+        document.getElementById(
+            "noMedia"
+        );
+
+
+    /* ---------------------------------------------
+       RESET EVERYTHING
     --------------------------------------------- */
 
     image.style.display = "none";
@@ -2046,15 +2305,8 @@ function showDetails(
 
     audioBox.style.display = "none";
 
-    mediaContainer.style.display = "none";
+    noMedia.style.display = "none";
 
-
-    video.pause();
-
-    audio.pause();
-
-
-    /* Remove old sources */
 
     image.src = "";
 
@@ -2063,176 +2315,176 @@ function showDetails(
     audio.removeAttribute("src");
 
 
+    video.pause();
+
+    audio.pause();
+
+
     /* ---------------------------------------------
        IMAGE
     --------------------------------------------- */
 
-    if (type === "image") {
-
-
-        icon.textContent = "🖼️";
+    if (
+        currentMediaType === "image"
+    ) {
 
 
         document.getElementById(
-            "modalCategory"
-        ).textContent = "Image";
+            "mediaTitle"
+        ).textContent =
+            "Image Evidence";
 
 
-        if (file) {
+        image.style.display =
+            "block";
 
-            image.src = file;
+
+        if (currentMediaFile) {
+
+            image.src =
+                currentMediaFile;
+
+        }
+
+        else {
+
+            noMedia.style.display =
+                "block";
 
             image.style.display =
-                "block";
-
-            mediaContainer.style.display =
-                "block";
+                "none";
 
         }
 
     }
+
 
 
     /* ---------------------------------------------
        VIDEO
     --------------------------------------------- */
 
-    else if (type === "video") {
-
-
-        icon.textContent = "🎥";
+    else if (
+        currentMediaType === "video"
+    ) {
 
 
         document.getElementById(
-            "modalCategory"
-        ).textContent = "Video";
+            "mediaTitle"
+        ).textContent =
+            "Video Recording";
 
 
         video.style.display =
             "block";
 
 
-        mediaContainer.style.display =
-            "block";
-
-
         /*
-           The video source is intentionally
-           blank.
+           If a video file is provided,
+           it will be loaded automatically.
 
-           When you have a real video,
-           simply use:
-
-           video.src = "your-video.mp4";
-
-           The controls will automatically
-           allow play / pause / volume /
-           fullscreen.
+           If the source is blank,
+           the video player remains visible
+           but contains no media.
         */
 
-        if (file) {
+        if (currentMediaFile) {
 
-            video.src = file;
-
-            video.play();
+            video.src =
+                currentMediaFile;
 
         }
 
     }
+
 
 
     /* ---------------------------------------------
        AUDIO
     --------------------------------------------- */
 
-    else if (type === "audio") {
-
-
-        icon.textContent = "🎧";
+    else if (
+        currentMediaType === "audio"
+    ) {
 
 
         document.getElementById(
-            "modalCategory"
-        ).textContent = "Audio";
+            "mediaTitle"
+        ).textContent =
+            "Audio Recording";
 
 
         audioBox.style.display =
             "block";
 
 
-        mediaContainer.style.display =
-            "block";
-
-
         /*
-           The audio source is intentionally
-           blank.
+           If an audio file is provided,
+           it will be loaded automatically.
 
-           Later you can use:
-
-           audio.src = "recording.mp3";
+           If blank, the audio player remains
+           available for when you add a file.
         */
 
-        if (file) {
+        if (currentMediaFile) {
 
-            audio.src = file;
-
-            audio.play();
+            audio.src =
+                currentMediaFile;
 
         }
 
     }
 
 
-    /* ---------------------------------------------
-       TEXT
-    --------------------------------------------- */
-
-    else {
-
-
-        icon.textContent = "📋";
-
-
-        document.getElementById(
-            "modalCategory"
-        ).textContent = "Text Details";
-
-    }
-
 
     /* ---------------------------------------------
-       SHOW MODAL
+       SHOW SECOND POPUP
     --------------------------------------------- */
 
-    modal.style.display = "flex";
-
+    mediaModal.style.display =
+        "flex";
 
 }
 
 
+
 /* =====================================================
-   CLOSE MODAL
+   CLOSE FIRST POPUP
 ===================================================== */
 
 function closeDetails() {
 
+    document.getElementById(
+        "detailsModal"
+    ).style.display =
+        "none";
 
-    const modal =
+}
+
+
+
+/* =====================================================
+   CLOSE SECOND POPUP
+===================================================== */
+
+function closeMedia() {
+
+
+    const mediaModal =
         document.getElementById(
-            "detailsModal"
+            "mediaModal"
         );
 
 
     const video =
         document.getElementById(
-            "modalVideo"
+            "mediaVideo"
         );
 
 
     const audio =
         document.getElementById(
-            "modalAudio"
+            "mediaAudio"
         );
 
 
@@ -2241,29 +2493,25 @@ function closeDetails() {
     audio.pause();
 
 
-    modal.style.display =
+    mediaModal.style.display =
         "none";
 
 }
 
 
+
 /* =====================================================
-   CLICK OUTSIDE
+   CLICK OUTSIDE FIRST POPUP
 ===================================================== */
 
-window.addEventListener(
+document.getElementById(
+    "detailsModal"
+).addEventListener(
     "click",
     function(event) {
 
-
-        const modal =
-            document.getElementById(
-                "detailsModal"
-            );
-
-
         if (
-            event.target === modal
+            event.target === this
         ) {
 
             closeDetails();
@@ -2272,6 +2520,30 @@ window.addEventListener(
 
     }
 );
+
+
+
+/* =====================================================
+   CLICK OUTSIDE MEDIA POPUP
+===================================================== */
+
+document.getElementById(
+    "mediaModal"
+).addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === this
+        ) {
+
+            closeMedia();
+
+        }
+
+    }
+);
+
 
 
 /* =====================================================
@@ -2287,7 +2559,34 @@ document.addEventListener(
             event.key === "Escape"
         ) {
 
-            closeDetails();
+
+            const mediaModal =
+                document.getElementById(
+                    "mediaModal"
+                );
+
+
+            const detailsModal =
+                document.getElementById(
+                    "detailsModal"
+                );
+
+
+            if (
+                mediaModal.style.display === "flex"
+            ) {
+
+                closeMedia();
+
+            }
+
+            else if (
+                detailsModal.style.display === "flex"
+            ) {
+
+                closeDetails();
+
+            }
 
         }
 
